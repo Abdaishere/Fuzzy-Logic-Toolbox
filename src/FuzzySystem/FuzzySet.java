@@ -10,7 +10,6 @@ public class FuzzySet {
         for (FuzzyValue val : values) {
             if (val.in(inputValue)) {
                 variable.addFuzzyValue(val.name, val.fuzzify(inputValue));
-                return;
             }
         }
     }
