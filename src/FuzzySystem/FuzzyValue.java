@@ -22,7 +22,7 @@ public class FuzzyValue {
                     return lineEquation(range.get(i),0, range.get(i - 1),1, val);
                 else if(i == 2)
                     return lineEquation(range.get(i),1, range.get(i - 1),1, val);
-                return lineEquation(range.get(i),1, range.get(i - 1),0, val);
+                return lineEquation(range.get(i),1, range.get(i - 1),0, val); // TODO recheck
             }
         }
         return 0.0;
