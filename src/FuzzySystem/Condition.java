@@ -8,4 +8,9 @@ public class Condition {
         return variable.getFuzzyValue(name);
 
     }
+
+    public Condition(String name, String value) {
+        this.variable_name = name;
+        this.value = value;
+    }
 }

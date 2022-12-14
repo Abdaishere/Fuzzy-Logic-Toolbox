@@ -3,7 +3,7 @@ package FuzzySystem;
 import java.util.ArrayList;
 
 public class FuzzySet {
-    ArrayList<FuzzyValue> values = null;
+    public ArrayList<FuzzyValue> values = new ArrayList<>();
 
     public void fuzzify(Variable variable) {
         double inputValue = variable.value;
