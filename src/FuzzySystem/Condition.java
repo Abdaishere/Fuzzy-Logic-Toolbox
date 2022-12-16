@@ -13,4 +13,9 @@ public class Condition {
         this.variable_name = name;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return variable_name + " " + value;
+    }
 }

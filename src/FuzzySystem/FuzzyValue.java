@@ -63,4 +63,8 @@ public class FuzzyValue {
 
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

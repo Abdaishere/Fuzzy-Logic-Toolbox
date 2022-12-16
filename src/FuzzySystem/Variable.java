@@ -51,4 +51,9 @@ public class Variable {
     public enum VariableType {
         IN, OUT
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
