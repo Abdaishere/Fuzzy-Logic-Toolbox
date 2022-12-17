@@ -21,6 +21,10 @@ public class FuzzySystem {
         rules.add(rule);
     }
 
+    public ArrayList<FuzzyRule> getRules(){
+        return rules;
+    }
+
     public ArrayList<Variable> getVariablesList() {
         return new ArrayList<>(variables.values());
     }

@@ -19,8 +19,8 @@ public class MainGUI {
     private JTable rulesTable;
     private JButton addVariableButton;
     private JButton addRuleButton;
-    private JButton removeRuleButton;
-    private JButton removeVariableButton;
+    private JButton showRulesDetailsButton;
+    private JButton showVariablesDetailsButton;
 
     JMenuBar menuBar;
     JMenu menu, fuzzySystemsSubMenu;
@@ -84,13 +84,12 @@ public class MainGUI {
         menu.addSeparator();
 
 
-        // init Tables
-        // variables
+        //init tables
         String[] col = {"ID", "Name", "Type", "Lower", "Upper"};
         DefaultTableModel model = new DefaultTableModel(null, col);
         variablesTable = new JTable(model);
 
-        // rules
+
         String[] col2 = {"ID", "Condition", " Operator", "Condition", "Then"};
         DefaultTableModel model2 = new DefaultTableModel(null, col2);
         rulesTable = new JTable(model2);
@@ -267,7 +266,7 @@ public class MainGUI {
         });
     }
 
-    public void errorPopup(Exception e1){
+    public void errorPopup(Exception e1) {
         JPanel fuzzyPanel = new JPanel();
         fuzzyPanel.add(new JLabel(e1.getMessage()));
         JOptionPane.showMessageDialog(null, fuzzyPanel, "Error", JOptionPane.WARNING_MESSAGE);
@@ -286,7 +285,25 @@ public class MainGUI {
 
     // TODO LOAD A SYSTEM IN TABLES
     void loadSystem(FuzzySystem f) {
+        // init Tables
+        // variables
+        String[] col = {"ID", "Name", "Type", "Lower", "Upper"};
+        DefaultTableModel variablesTableModel = new DefaultTableModel(null, col);
+        for (Variable v : f.getVariablesList()) {
+            variablesTableModel.addRow(new String[]{String.valueOf(variablesTableModel.getRowCount()), v.name, v.type.toString(), String.valueOf(v.min), String.valueOf(v.max)});
+        }
+        variablesTable = new JTable(variablesTableModel);
 
+
+        // rules
+        String[] col2 = {"ID", "Condition", " Operator", "Condition", "Then"};
+        DefaultTableModel rulesTableModel = new DefaultTableModel(null, col);
+        for (FuzzyRule r : f.getRules()) {
+            rulesTableModel.addRow(new String[]{String.valueOf(rulesTableModel.getRowCount()), r.c1.toString(), r.operator.toString(), r.c2.toString(), r.output_variable + " " + r.output_value});
+        }
+        rulesTable = new JTable(variablesTableModel);
+
+        Main.fuzzySystem = f;
     }
 
     public static void main(String[] args) {
