@@ -15,7 +15,6 @@ public class Main {
 
         Scanner sc = new Scanner(new File("input.txt"));
         int choice;
-        String input;
         String system_name;
         String system_description;
 
@@ -109,7 +108,8 @@ public class Main {
             System.out.println("Enter the fuzzy set name, type (TRI/TRAP) and values: (Press x to finish)");
             System.out.println("-----------------------------------------------------");
             Variable var = fuzzySystem.getVariable(input);
-            FuzzySet fuzzySet = new FuzzySet();
+            // TODO add name each time for the whole set
+            FuzzySet fuzzySet = new FuzzySet("");
             var.fuzzySets.add(fuzzySet);
             input = sc.nextLine();
             while (!input.equalsIgnoreCase("x")) {

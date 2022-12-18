@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Variable {
     public String name;
     public ArrayList<FuzzySet> fuzzySets = new ArrayList<>();
-    public HashMap<String, Double> fuzzyValues = new HashMap<>();
+    public HashMap<String, Double> fuzzyValues;
 
     public double value;
     public String defuzzified_value;
@@ -32,10 +32,6 @@ public class Variable {
         for (FuzzySet fs : fuzzySets) {
             fs.defuzzify(this);
         }
-    }
-
-    public String getName() {
-        return this.name;
     }
 
     public void addFuzzyValue(String name, double value) {

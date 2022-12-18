@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 public class FuzzyRule {
     // proj_funding high or exp_level expert => risk low
-    // TODO add parser
     public Condition c1;
     public Condition c2;
     public FuzzyOperator operator;
