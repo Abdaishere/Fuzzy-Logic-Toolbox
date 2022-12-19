@@ -46,7 +46,8 @@ public class FuzzySystem {
      */
     public void Fuzzification() {
         for (Variable variable : variables.values()) {
-            variable.Fuzzification();
+            if(variable.type == Variable.VariableType.IN)
+                variable.Fuzzification();
         }
     }
 

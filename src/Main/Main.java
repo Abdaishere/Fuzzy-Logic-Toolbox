@@ -56,6 +56,11 @@ public class Main {
     }
 
     private static void runSimulation(Scanner sc, FuzzySystem fuzzySystem) {
+        if(fuzzySystem.getRules().isEmpty() || fuzzySystem.getVariablesList().isEmpty() || fuzzySystem.getVariablesList().get(0).fuzzySets.isEmpty()){
+            System.out.println("CAN’T START THE SIMULATION! Please add the fuzzy sets and rules first.");
+            return;
+        }
+
         System.out.println("Enter the crisp values:");
         System.out.println("-----------------------");
         for (Variable variable : fuzzySystem.getVariablesList()) {
@@ -81,6 +86,7 @@ public class Main {
 
     private static void addRule(Scanner sc, FuzzySystem fuzzySystem) {
         String input;
+
         System.out.println("Enter the rules in this format: (Press x to finish)\n" + "IN_variable set operator IN_variable set => OUT_variable set");
         System.out.println("------------------------------------------------------------");
         input = sc.nextLine();

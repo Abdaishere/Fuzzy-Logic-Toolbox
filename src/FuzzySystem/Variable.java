@@ -39,7 +39,7 @@ public class Variable {
     }
 
     public double getFuzzyValue(String name) {
-        return fuzzyValues.get(name);
+        return fuzzyValues.getOrDefault(name,0.0);
     }
 
 

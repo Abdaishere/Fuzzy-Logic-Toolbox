@@ -29,14 +29,18 @@ public class FuzzySet {
             weight_products += value * values_average[i];
             weights_sum += value;
         }
-        double z = weight_products / weights_sum;
-        for (int i = 0; i < values_average.length; i++) {
-            if (values_average[i] < z) {
-                variable.defuzzified_value = values.get(i).name;
-                variable.value = z;
-                return;
+        double z = Math.round((weight_products * 100.0) / weights_sum) / 100.0;
+        double min_dist = Math.abs(values_average[0] - z);
+        int min_indx = 0;
+        for (int i = 1; i < values_average.length; i++) {
+            double curr_dist = Math.abs(values_average[i] - z);
+            if (min_dist >= curr_dist) {
+                min_indx = i;
+                min_dist = curr_dist;
             }
         }
+        variable.defuzzified_value = values.get(min_indx).name;
+        variable.value = z;
     }
 
     @Override
