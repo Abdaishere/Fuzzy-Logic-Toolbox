@@ -44,34 +44,46 @@ public class VariableWindow {
         fuzzyPanel.add(new JLabel("Values (Spaced Out):"));
         fuzzyPanel.add(ranges);
 
-        int result = JOptionPane.showConfirmDialog(null, fuzzyPanel, "Enter Fuzzy Set Details", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            try {
-                FuzzySet fuzzySet = new FuzzySet(fuzzySetName.getText());
+        // enter name
+        JTextField mainName = new JTextField();
+        int nameMenu = JOptionPane.showConfirmDialog(null, mainName, "Enter The Fuzzy Set Name", JOptionPane.OK_CANCEL_OPTION);
+
+        if (nameMenu == JOptionPane.OK_OPTION) {
+            int result = JOptionPane.showConfirmDialog(null, fuzzyPanel, "Enter The Fuzzy Sets Details", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+
+                FuzzySet fuzzySet = new FuzzySet(mainName.getText());
+                DefaultMutableTreeNode set = new DefaultMutableTreeNode(mainName.getText());
+
                 data.fuzzySets.add(fuzzySet);
 
-                FuzzyValue fuzzyValue = new FuzzyValue();
+                while (result == JOptionPane.OK_OPTION) {
+                    try {
+                        FuzzyValue fuzzyValue = new FuzzyValue();
 
-                fuzzyValue.name = fuzzySetName.getText();
-                fuzzyValue.type = type[types.getSelectedIndex()];
+                        fuzzyValue.name = fuzzySetName.getText();
+                        fuzzyValue.type = type[types.getSelectedIndex()];
 
-                for (String range : ranges.getText().split(" ")) {
-                    fuzzyValue.range.add(Integer.parseInt(range));
+                        for (String range : ranges.getText().split(" ")) {
+                            fuzzyValue.range.add(Integer.parseInt(range));
+                        }
+
+                        fuzzySet.values.add(fuzzyValue);
+
+                    } catch (Exception e1) {
+                        MainGUI.errorPopup(e1);
+                    }
+                    result = JOptionPane.showConfirmDialog(null, fuzzyPanel, "Continue ?", JOptionPane.YES_NO_OPTION);
                 }
-
-                fuzzySet.values.add(fuzzyValue);
 
                 // Update sets node in Tree
                 fuzzySetsNode.remove(fuzzySetsNode.getChildCount() - 1);
 
-                fuzzySetsNode.add(new DefaultMutableTreeNode(fuzzyValue.name));
+                fuzzySetsNode.add(set);
 
                 fuzzySetsNode.add(new DefaultMutableTreeNode("NEW SET"));
 
                 dtm.nodeStructureChanged(fuzzySetsNode);
-
-            } catch (Exception e1) {
-                MainGUI.errorPopup(e1);
             }
         }
     }
@@ -94,18 +106,12 @@ public class VariableWindow {
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
 
         // Details Node
-        DefaultMutableTreeNode details = new DefaultMutableTreeNode(data.name);
+        DefaultMutableTreeNode details = new DefaultMutableTreeNode("Details");
 
         // FuzzySets Node
         fuzzySetsNode = new DefaultMutableTreeNode("Fuzzy Sets");
         if (data.fuzzyValues != null) {
-            data.fuzzySets.forEach((fuzzySet) -> {
-                DefaultMutableTreeNode fuzzySetGroup = new DefaultMutableTreeNode(fuzzySet.name);
-
-                fuzzySet.values.forEach((v) -> fuzzySetGroup.add(new DefaultMutableTreeNode(v.name)));
-
-                fuzzySetsNode.add(fuzzySetGroup);
-            });
+            data.fuzzySets.forEach((fuzzySet) -> fuzzySetsNode.add(new DefaultMutableTreeNode(fuzzySet.name)));
         }
         fuzzySetsNode.add(new DefaultMutableTreeNode("NEW SET"));
 
@@ -140,13 +146,13 @@ public class VariableWindow {
                     case "NEW SET" -> newFuzzySetWindow();
                     default -> setR_window(selectedNode.getParent().getIndex(selectedNode));
                 }
-                spliter.setRightComponent(r_window);
+                spliter.setRightComponent(new JScrollPane(r_window));
             }
         });
     }
 
     public void setR_window(int n) {
-        if (n == 0) return;
+        if (n < 0) return;
         FuzzySet set = data.fuzzySets.get(n);
         JLabel setsLabel = new JLabel("Fuzzy Set: " + set.name);
         r_window.add(setsLabel);

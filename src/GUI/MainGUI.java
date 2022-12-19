@@ -312,6 +312,7 @@ public class MainGUI {
                         if (variable.type == Variable.VariableType.IN) {
                             IN.add(new JLabel(String.format("%s : %.1f", variable.name, variable.value)));
                         } else if (variable.type == Variable.VariableType.OUT) {
+                            System.out.printf("The predicted %s is %s (%.1f)%n", variable.name, variable.defuzzified_value, variable.value);
                             OUTs.add(new JLabel(String.format("%s : %s (%.1f)", variable.name, variable.defuzzified_value, variable.value)));
                         }
                     }
