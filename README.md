@@ -5,11 +5,12 @@ output variables, membership functions, rules and defuzzification methods.
 ## Createing New Fuzzy System
 The user press on the System menu to create a new fuzzy system
 
-![image](https://user-images.githubusercontent.com/60580509/209236751-a544f99b-d638-424c-acae-482f41b8d6a5.png)
+![209236751-a544f99b-d638-424c-acae-482f41b8d6a5](https://user-images.githubusercontent.com/60580509/236481917-d31fb6da-20a3-41ca-9ec8-5e25142dae44.png)
 
 Entering Fuzzy System name and description
 
-![image](https://user-images.githubusercontent.com/60580509/209236993-a3a87b74-8798-44b3-b881-7529b472059d.png)
+![209236993-a3a87b74-8798-44b3-b881-7529b472059d](https://user-images.githubusercontent.com/60580509/236482282-9ae2bd9a-9fce-4763-83a3-8aef52f9e9c0.png)
+
 
 
 ## Adding Variables 
@@ -21,7 +22,7 @@ the varibale type
 ## Adding FuzzySets to a Variable
 The user will first select the variable then will click on Show Variables Details
 
-![image](https://user-images.githubusercontent.com/60580509/209237509-ecd71fc7-a1f7-4272-8638-d520e9aef5ba.png)
+![209237509-ecd71fc7-a1f7-4272-8638-d520e9aef5ba](https://user-images.githubusercontent.com/60580509/236484354-6eb8ac98-26f7-425e-9ae2-753883ab8427.png)
 
 Here the user can see the FuzzySet for the selected variable and add new FuzzySets
 
@@ -29,7 +30,7 @@ Here the user can see the FuzzySet for the selected variable and add new FuzzySe
 
 When the user press on New FuzzySet he will enter the name of the set, value and the ranges
 
-![image](https://user-images.githubusercontent.com/60580509/209237835-f448d945-c7e9-4cae-9f9a-b056e467947b.png)
+![209237835-f448d945-c7e9-4cae-9f9a-b056e467947b](https://user-images.githubusercontent.com/60580509/236484562-7e4c92f7-ac18-4801-848b-a4a039021834.png)
 
 ## Adding Rules
 Now after the user has entered the fuzzy sets he can add the rules by pressing Add Rule
@@ -52,7 +53,8 @@ The user will then enter the input variables values and click Okay
 
 The user can see the results in the last propmt 
 
-![image](https://user-images.githubusercontent.com/60580509/209238794-ae8ceffb-5f4e-4567-a617-68d2949d77ca.png)
+![209238794-ae8ceffb-5f4e-4567-a617-68d2949d77ca](https://user-images.githubusercontent.com/60580509/236484778-2943d306-6d6c-4bfa-93f7-a72ba7b55349.png)
+
 
 
 
